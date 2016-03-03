@@ -13,7 +13,7 @@ restApi = Api(api)
 
 class PostList(Resource):
     def get(self):
-        d             = current_app.palala.current()
+        d             = current_app.iwn.current()
         print d
         r             = jsonify({ 'posts': d })
         r.status_code = 200
@@ -21,20 +21,20 @@ class PostList(Resource):
 
 class DomainList(Resource):
     def get(self):
-        d             = current_app.palala.domains()
+        d             = current_app.iwn.domains()
         r             = jsonify({ 'domains': d })
         r.status_code = 200
         return r
 
 class Domain(Resource):
     def get(self, domain):
-        d             = current_app.palala.domain(domain)
+        d             = current_app.iwn.domain(domain)
         r             = jsonify(d)
         r.status_code = 200
         return r
 class Post(Resource):
     def get(self, postid):
-        post          = current_app.palala.post(postid)
+        post          = current_app.iwn.post(postid)
         r             = jsonify(post)
         r.status_code = 200
         return r

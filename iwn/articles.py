@@ -56,16 +56,16 @@ def mention(sourceURL, targetURL):
                           'key':  postID,
                         }
 
-            r = current_app.palala.query('select * from domains where domain = "{domain}"'.format(**data))
+            r = current_app.iwn.query('select * from domains where domain = "{domain}"'.format(**data))
             if len(r) > 0:
-                current_app.palala.run('update domains set updated = "{updated}" where domain = "{domain}"'.format(domain=domain, updated=postDate))
+                current_app.iwn.run('update domains set updated = "{updated}" where domain = "{domain}"'.format(domain=domain, updated=postDate))
             else:
-                current_app.palala.run('insert into domains (domain, created, updated) values ("{domain}","{created}","{updated}");'.format(domain=domain,created=postDate,updated=postDate))
+                current_app.iwn.run('insert into domains (domain, created, updated) values ("{domain}","{created}","{updated}");'.format(domain=domain,created=postDate,updated=postDate))
 
             values = []
             for key in ("postid","domain","source","target","created","updated","parsed","comment"):
                 values.append(data[key])
-            current_app.palala.run('insert into posts (postid,domain,source,target,created,updated,parsed,comment) values (?,?,?,?,?,?,?,?)', values)
+            current_app.iwn.run('insert into posts (postid,domain,source,target,created,updated,parsed,comment) values (?,?,?,?,?,?,?,?)', values)
 
             current_app.dbRedis.lpush('indienews-recent', postID)
             current_app.dbRedis.ltrim('indienews-recent', 0, 50)

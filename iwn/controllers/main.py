@@ -4,7 +4,7 @@
 :license: CC0 1.0 Universal, see LICENSE for more details.
 """
 
-from flask import Blueprint, Response, request, current_app, render_template, g
+from flask import Blueprint, Response, request, current_app, render_template, jsonify, g
 from iwn.extensions import cache
 from iwn.articles import mention
 
@@ -28,7 +28,12 @@ def howto():
 
 @main.route('/articles')
 def articles():
+    g.posts = current_app.iwn.current()
     return render_template('en-posts.jinja')
+
+@main.route('/publish')
+def publish():
+    return render_template('en-howto.jinja')
 
 @main.route('/static/<path:path>')
 def static_proxy(path):
@@ -40,7 +45,7 @@ def domain(domain):
     render an info page for it.
     """
     current_app.logger.info('domain [%s]' % domain)
-    g.domain = current_app.palala.domain(domain)
+    g.domain = current_app.iwn.domain(domain)
     if g.domain is None:
         return Response('', 404)
     else:
@@ -52,7 +57,7 @@ def domainPosts(postid):
     and render an info page for it.
     """
     current_app.logger.info('post [%s]' % postid)
-    g.post = current_app.palala.post(postid)
+    g.post = current_app.iwn.post(postid)
     if g.post is None:
         return Response('', 404)
     else:
@@ -60,6 +65,7 @@ def domainPosts(postid):
 
 @main.route('/webmention', methods=['POST'])
 def webmention():
+    current_app.logger.info('webmention [%s]' % request.method)
     if request.method == 'POST':
         source = request.form.get('source')
         target = request.form.get('target')
@@ -68,4 +74,9 @@ def webmention():
         current_app.logger.info('webmention [{source}] [{target}]'.format(source=source, target=target))
 
         if '/publish' in target:
-            return mention(source, target)
+            r = mention(source, target)
+            response                     = jsonify(r)
+            response.status_code         = 201
+            response.headers['location'] = 'https://indieweb.news/posts/{postid}'.format(**r)
+
+            return response
