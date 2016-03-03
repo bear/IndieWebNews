@@ -5,13 +5,13 @@
 :license: CC0 1.0 Universal, see LICENSE for more details.
 """
 
-import os
-
-
 from iwn import create_app
 
-env = os.environ.get('INDIEWEBNEWS_ENV', 'dev')
-application = create_app('iwn.settings.%sConfig' % env.capitalize())
+# ALWAYS start the service in production mode
+#
+# developer testing should be done using the
+# 'server' Makefile target
+application = create_app('iwn.settings.ProdConfig')
 
 if __name__ == "__main__":
     application.run()
