@@ -17,8 +17,18 @@ def index():
     return render_template('en-home.jinja')
 
 @main.route('/about')
-def testing():
+@cache.cached(timeout=1000)
+def about():
     return render_template('en-about.jinja')
+
+@main.route('/howto')
+@cache.cached(timeout=1000)
+def howto():
+    return render_template('en-howto.jinja')
+
+@main.route('/articles')
+def articles():
+    return render_template('en-posts.jinja')
 
 @main.route('/static/<path:path>')
 def static_proxy(path):

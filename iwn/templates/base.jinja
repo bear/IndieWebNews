@@ -22,32 +22,31 @@
   {% block siteheader %}
   <header class="site-header">
     <div class="site-menu">
-      <p>IndieWeb News</p>
+      <p><a href="/">IndieWeb News</a></p>
       <ul class="menu-items">
-        <li><a href="/feed">Home</a></li>
-        <li><a href="/publish">Publish</a></li>
+        <li><a href="/articles">Articles</a></li>
       </ul>
     </div>
   </header>
   {% endblock siteheader %}
 
   {% block pageheader %}
-  <div class="page-header">
-    <p>IndieWeb News is collection of posts from the <a href="https://indiewebcamp.com">IndieWeb community</a></p>
-  </div>
   {% endblock pageheader %}
 
   {% block pagecontent %}
-  <div class="page-content">
-  </div>
   {% endblock pagecontent %}
 
   {% block pagefooter %}
   {% endblock pagefooter %}
 
   {% block sitefooter %}
+  <hr/>
   <footer>
     <div>
+      <ul>
+        <li><a href="/about">About</a></li>
+        <li><a href="/howto">How to Submit Articles</a></li>
+      </ul>
       <p class="credits">&copy; 2016 by <a href="https://bear.im">Bear</a>.
         IndieWeb News is part of <a href="http://indiewebcamp.com/">IndieWebCamp</a> and is <a href="https://github.com/bear/palala">open source</a>.
       </p>
