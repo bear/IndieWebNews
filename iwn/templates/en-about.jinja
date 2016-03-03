@@ -2,19 +2,25 @@
 
 {% block pagecontent %}
 <h3>Article Submission</h3>
-<p>Articles are added to the site by you writing a post on your site and then letting IndieWeb News know about it via a <a href="http://indiewebcamp.com/webmention">Webmention</a>.</p>
+<p>
+Articles are added to the site by you writing a post on your site and then letting IndieWeb News know about it via a <a href="http://indiewebcamp.com/webmention">Webmention</a>.
+</p>
 
 <h4>Write a Post</h4>
-
-<p>Write a post on your own site, and mark it up with the Microformats markup for an <a href="http://microformats.org/wiki/microformats2#h-entry">h-entry</a>.</p>
-
-<p>Somewhere in your article's markup, either add a <a href="http://indiewebcamp.com/rel-syndication">u-syndication</a> or <a href="http://indiewebcamp.com/u-category">u-category</a> link to the <a href="/publish">the IndieWeb News</a> publish endpoint.</p>
+<p>
+Write a post on your own site, and mark it up with the Microformats markup for an <a href="http://microformats.org/wiki/microformats2#h-entry">h-entry</a>.
+</p>
+<p>
+Somewhere in your article's markup, either add a <a href="http://indiewebcamp.com/rel-syndication">u-syndication</a> or <a href="http://indiewebcamp.com/u-category">u-category</a> link to the <a href="/publish">the IndieWeb News</a> publish endpoint.
+</p>
 
 <h4>Send a Webmention</h4>
-
-<p>Send a <a href="http://indiewebcamp.com/webmention">Webmention</a> notification to IndieWeb News. When that is received, IndieWeb News will fetch the page from your site and look for the <a href="http://microformats.org/wiki/microformats2#h-entry">h-entry</a> markup to find the post title and author.</p>
+<p>
+Send a <a href="http://indiewebcamp.com/webmention">Webmention</a> notification to IndieWeb News. When that is received, IndieWeb News will fetch the page from your site and look for the <a href="http://microformats.org/wiki/microformats2#h-entry">h-entry</a> markup to find the post title and author.
+</p>
 
 <hr/>
+
 <h3>API</h3>
 <ul>
   <li>/v1/domains</li>
@@ -24,26 +30,20 @@
 </ul>
 
 <hr/>
-<h3>Credits</h3>
+
+<h3>Inspirations</h3>
 <p>
- While the underlying code may be mine, the style and most of the design is inspired by the
- IndieWeb Communities sites. I'm heavily influenced by
- <a href="aaronparecki.com">Aaron Parecki</a>,
- <a href="tantek.com">Tantek Çelik</a> and many others:
+While the underlying code may be mine, the style and most of the design is inspired by the
+IndieWeb Communities sites. I'm heavily influenced by:
 </p>
-<p>
- <a href="http://brid.gy">Bridgy</a> which was written by <a href="https://snarfed.org/">Ryan Barrett</a>
- and <a href="https://kylewm.com/">Kyle Mahan</a>
-</p>
-<p>
- <a href="http://kartikprabhu.com/">Kartik Prabhu</a> for his site and work on Python tools.
-</p>
-<p>
- <a href="https://github.com/kylewm/mf2util">mf2util</a> by <a href="https://kylewm.com/">Kyle Mahan</a>.
-</p>
-<p>
- <a href="https://github.com/tommorris/mf2py">mf2py</a> by Tom Morris
-</p>
-<hr/>
+<ul>
+  <li><a href="aaronparecki.com">Aaron Parecki</a></li>
+  <li><a href="tantek.com">Tantek Çelik</a></li>
+  <li><a href="http://brid.gy">Bridgy</a> which was written by <a href="https://snarfed.org/">Ryan Barrett</a>
+and <a href="https://kylewm.com/">Kyle Mahan</a></li>
+  <li><a href="http://kartikprabhu.com/">Kartik Prabhu</a> for his site and work on Python tools</li>
+  <li><a href="https://github.com/kylewm/mf2util">mf2util</a> by <a href="https://kylewm.com/">Kyle Mahan</a></li>
+  <li><a href="https://github.com/tommorris/mf2py">mf2py</a> by Tom Morris</li>
+</ul>
 
 {% endblock pagecontent %}
