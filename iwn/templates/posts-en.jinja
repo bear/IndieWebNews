@@ -1,0 +1,33 @@
+{% extends "base.jinja" %}
+{% block content %}
+<script type="text/javascript" src="/static/pushstream.js"></script>
+
+{% for post in g.posts %}
+<div class="{{ post.comment.type }}">
+<h3><a href="{{ post.comment.url }}">{{ post.comment.name }}</a></h3>
+{{ post.comment.content }}
+</div>
+{% endfor %}
+
+
+<div id="messages" style="width:800px;height:300px;"></div>
+
+    <script type="text/javascript" language="javascript" charset="utf-8">
+    // <![CDATA[
+    function messageReceived(text, id, channel) {
+      document.getElementById('messages').innerHTML += id + ': ' + text + '<br>';
+    };
+
+    var pushstream = new PushStream({
+      host: window.location.hostname,
+      port: window.location.port,
+      modes: "eventsource"
+    });
+    pushstream.onmessage = messageReceived;
+    pushstream.addChannel('push');
+    pushstream.connect();
+    // ]]>
+    </script>
+</div>
+
+{% endblock content %}

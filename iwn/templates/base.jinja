@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>IndieWeb News</title>
+
+  <meta name="description" content="IndieWeb News"/>
+  <meta name="author" content="bear"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <link rel="webmention"             href="/webmention"/>
+  <link rel="micropub"               href="/micropub"/>
+  <link rel="token_endpoint"         href="/token"/>
+  <link rel="authorization_endpoint" href="https://indieauth.com/auth"/>
+
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Open+Sans:400italic,600italic,400,600"
+        rel="stylesheet" type="text/css"/>
+  <link href="/static/iwn.css"
+        rel="stylesheet" type="text/css"/>
+</head>
+<body>
+  {% block navigation %}
+  <header class="nav-header">
+    <div class="navigation">
+      <p>IndieWeb News</p>
+      <ul class="nav-items">
+        <li><a href="/feed">Home</a></li>
+        <li><a href="/publish">Publish</a></li>
+      </ul>
+    </div>
+  </header>
+  {% endblock %}
+
+  {% block header %}
+  <div class="page-header">
+  </div>
+  {% endblock %}
+
+  {% block content %}
+  <div class="page-content">
+  </div>
+  {% endblock %}
+
+  {% block footer %}
+  <footer>
+    <div>
+      <p class="credits">&copy; 2016 by <a href="https://bear.im">Bear</a>.
+        IndieWeb News is part of <a href="http://indiewebcamp.com/">IndieWebCamp</a> and is <a href="https://github.com/bear/palala">open source</a>.
+      </p>
+    </div>
+  </footer>
+  {% endblock %}
+</body>
+</html>

@@ -1,0 +1,9 @@
+{% extends "base.jinja" %}
+{% block content %}
+
+<div class="{{ g.post.comment.type }}">
+<h2><a href="{{ g.post.comment.url }}">{{ g.post.comment.name }}</a></h2>
+{{ g.post.comment.content }}
+</div>
+
+{% endblock content %}
