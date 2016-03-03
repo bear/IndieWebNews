@@ -1,5 +1,5 @@
 {% extends "base.jinja" %}
-{% block content %}
+{% block pagecontent %}
 <h2><a href="/domains/{{ g.domain.domain }}">{{ g.domain.domain }}</a></h2>
 <p>First seen on {{ g.domain.created }}</p>
 <p>Last updated on {{ g.domain.updated }}</p>
@@ -10,4 +10,4 @@
 {% endfor %}
 </ul>
 
-{% endblock content %}
+{% endblock pagecontent %}

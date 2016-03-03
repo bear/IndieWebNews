@@ -1,5 +1,36 @@
 {% extends "base.jinja" %}
-{% block content %}
-<h2>IndieWeb News</h2>
-<p>IndieWeb News is collection of posts from the community</p>
-{% endblock content %}
+{% block sitelanguage %}lang="en"{% endblock sitelanguage %}
+{% block sitetitle %}IndieWeb News{% endblock sitetitle%}
+{% block siteheader %}
+  <header class="site-header">
+    <div class="site-menu">
+      <p>IndieWeb News</p>
+      <ul class="menu-items">
+        <li><a href="/feed">Home</a></li>
+        <li><a href="/publish">Publish</a></li>
+      </ul>
+    </div>
+  </header>
+{% endblock site-header %}
+
+{% block pageheader %}
+  <div class="page-header">
+    <p>IndieWeb News is collection of posts from the <a href="https://indiewebcamp.com">IndieWeb community</a></p>
+  </div>
+{% endblock pageheader %}
+
+{% block pagecontent %}
+{% endblock pagecontent %}
+
+{% block pagefooter %}
+{% endblock pagefooter %}
+
+{% block sitefooter %}
+  <footer>
+    <div>
+      <p class="credits">&copy; 2016 by <a href="https://bear.im">Bear</a>.
+        IndieWeb News is part of <a href="http://indiewebcamp.com/">IndieWebCamp</a> and is <a href="https://github.com/bear/palala">open source</a>.
+      </p>
+    </div>
+  </footer>
+{% endblock sitefooter %}

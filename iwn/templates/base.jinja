@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html {% block sitelanguage %}lang="en"{% endblock %}>
 <head>
   <meta charset="utf-8">
-  <title>IndieWeb News</title>
+  <title>{% block sitetitle %}IndieWeb News{% endblock %}</title>
 
   <meta name="description" content="IndieWeb News"/>
   <meta name="author" content="bear"/>
@@ -19,29 +19,33 @@
         rel="stylesheet" type="text/css"/>
 </head>
 <body>
-  {% block navigation %}
-  <header class="nav-header">
-    <div class="navigation">
+  {% block siteheader %}
+  <header class="site-header">
+    <div class="site-menu">
       <p>IndieWeb News</p>
-      <ul class="nav-items">
+      <ul class="menu-items">
         <li><a href="/feed">Home</a></li>
         <li><a href="/publish">Publish</a></li>
       </ul>
     </div>
   </header>
-  {% endblock %}
+  {% endblock siteheader %}
 
-  {% block header %}
+  {% block pageheader %}
   <div class="page-header">
+    <p>IndieWeb News is collection of posts from the <a href="https://indiewebcamp.com">IndieWeb community</a></p>
   </div>
-  {% endblock %}
+  {% endblock pageheader %}
 
-  {% block content %}
+  {% block pagecontent %}
   <div class="page-content">
   </div>
-  {% endblock %}
+  {% endblock pagecontent %}
 
-  {% block footer %}
+  {% block pagefooter %}
+  {% endblock pagefooter %}
+
+  {% block sitefooter %}
   <footer>
     <div>
       <p class="credits">&copy; 2016 by <a href="https://bear.im">Bear</a>.
@@ -49,6 +53,6 @@
       </p>
     </div>
   </footer>
-  {% endblock %}
+  {% endblock sitefooter %}
 </body>
 </html>

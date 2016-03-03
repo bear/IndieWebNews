@@ -4,7 +4,7 @@
 :license: CC0 1.0 Universal, see LICENSE for more details.
 """
 
-from flask import Blueprint, Response, request, jsonify, current_app, render_template, g
+from flask import Blueprint, Response, request, current_app, render_template, g
 from iwn.extensions import cache
 from iwn.articles import mention
 
@@ -14,15 +14,15 @@ main = Blueprint('main', __name__)
 @main.route('/')
 @cache.cached(timeout=1000)
 def index():
-    return render_template('home.jinja')
+    return render_template('en-home.jinja')
+
+@main.route('/about')
+def testing():
+    return render_template('en-about.jinja')
 
 @main.route('/static/<path:path>')
 def static_proxy(path):
     return main.send_from_directory('static', path)
-
-@main.route('/about')
-def testing():
-    return render_template('about.jinja')
 
 @main.route('/domain/<domain>')
 def domain(domain):
@@ -47,27 +47,6 @@ def domainPosts(postid):
         return Response('', 404)
     else:
         return render_template('post.jinja')
-
-@main.route('/submit', methods=['GET', 'POST'])
-def submit():
-    if request.method == 'POST':
-        source = request.form.get('source')
-        target = request.form.get('target')
-        # vouch  = request.form.get('vouch')
-
-        current_app.logger.info('submit [%s] [%s]' % (source, target))
-
-        r = mention(source, target)
-        if r is None:
-            response             = jsonify({ "error": "submitted URL cound not be found within target URL"})
-            response.status_code = 400
-        else:
-            response                     = jsonify(r)
-            response.status_code         = 201
-            response.headers['location'] = 'http://indieweb.news/posts/{domain}/{postid}'.format(**r)
-        return response
-    else:
-        return render_template('submit.jinja')
 
 @main.route('/webmention', methods=['POST'])
 def webmention():

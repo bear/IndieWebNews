@@ -19,6 +19,8 @@ class Config(object):
     VOUCH_REQUIRED = False
     CACHE_TYPE     = "null"
     CACHE_NO_NULL_WARNING = True
+    LANGUAGES      = { 'en': 'English'
+                     }
 
 class ProdConfig(Config):
     ENV        = 'prod'
