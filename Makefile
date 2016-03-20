@@ -22,7 +22,7 @@ install-uwsgi:
 install:
 	pip install -Ur requirements.txt
 
-install-tests: install
+install-dev: install
 	pip install -Ur requirements-test.txt
 
 clean:
