@@ -41,10 +41,11 @@ coverage: lint
 	@coverage report
 
 info:
-	@python --version
-	@pip --version
-	@virtualenv --version
 	@uname -a
+	@pyenv --version
+	@pip --version
+	@python --version
+	@pyenv version
 
 ci: info coverage
 	CODECOV_TOKEN=`cat .codecov-token` codecov
